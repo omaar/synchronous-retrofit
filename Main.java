@@ -10,42 +10,18 @@ import java.util.Scanner;
 
 public class Main{
 	public static void main(String[] args) {
-		Scanner sc = new Scanner(System.in);
-		String happiness, term;
-		int num;
-		while(true){
-			System.out.println("Bienvenido al Memerama!");
-			System.out.println("Sobre que quieres buscar Gifs?: ");
-			term = sc.nextLine();
-			System.out.println("Cuantos quieres abrir?: ");
-			num = sc.nextInt();
-			System.out.println("Buscando tus Gifs feos...");
-			Main.searchGifs(term, num);
-
-			System.out.println("Contento? Bye [y/n]: ");
-			sc.next();
-			happiness = sc.nextLine();
-			
-			if(happiness.equalsIgnoreCase("y")){
-				System.out.println("Vale, bye");
-				break;
-			}else{
-				continue;
-			}
-			// System.out.println("Random o los primeros N? :");
-		}
+			Main.searchGifs("hackerz", 1);
 	}
 
 	public static void searchGifs(String term, int numImages){
 		GiphyService service = new GiphyService();
-		final int num = numImages;
 
 		GiphyResponse gifs = service.searchGifs(term);
-
 		int i = 0;
+
 		for (Gif gif : gifs.getData()) {
 			i++;
-			if(i <= num){
+			if(i <= numImages){
 				Main.openInBrowser(gif.images.fixed_height.url);
 			}
 		}

@@ -15,7 +15,6 @@ public class GiphyService {
 			@Query("api_key") String apiKey,
 			@Query("q") String query
 		);
-			// @Query("q") String query, Callback<GiphyResponse> cb);
 	}
 
 	public GiphyService(){
